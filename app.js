@@ -11,6 +11,10 @@ var app = express();
 
 // app.use(logger);
 
+//View Engine middleware
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 //Body Parser Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -20,7 +24,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 //  app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
-    res.send('Hello World');
+    res.render('index', {
+        title: 'Customers',
+    });
 });
 
 app.listen(3000, function () {
