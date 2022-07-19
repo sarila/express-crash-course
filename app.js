@@ -21,11 +21,33 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //Static Path file
 //Allows the static files inside public folder (frontend) 
-//  app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+var users = [
+    {
+        id: 1,
+        first_name: 'Sarila',
+        last_name: 'Ngakhusi',
+        address: 'Bhaktapur',
+    },
+    {
+        id: 2,
+        first_name: 'Himal',
+        last_name: 'Simkhada',
+        address: 'Kathmandu',
+    },
+    {
+        id: 3,
+        first_name: 'Jane',
+        last_name: 'Doe',
+        address: 'Lalitpur',
+    },
+]
 
 app.get('/', function(req, res){
     res.render('index', {
-        title: 'Customers',
+        title: "Customer",
+        users: users,
     });
 });
 
